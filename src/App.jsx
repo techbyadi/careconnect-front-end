@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -18,6 +18,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as doctorService from './services/doctorService'
 
 // styles
 import './App.css'
@@ -25,6 +26,16 @@ import './App.css'
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  const [doctors, setDoctors] = useState([])
+
+  useEffect(()=> {
+    const fetchAllDoctors = async () => {
+      const doctorsData = await doctorService.index()
+      console.log("List of doctors:", doctorsData);
+      setDoctors(doctorsData)
+    }
+    fetchAllDoctors()
+  }, [])
 
   const handleLogout = () => {
     authService.logout()
@@ -40,7 +51,7 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} doctors={doctors} />} />
         <Route
           path="/profiles"
           element={
