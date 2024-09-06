@@ -1,57 +1,60 @@
 // npm modules
 import { useState } from 'react'
 
-// components
-import DoctorDetails from '../DoctorDetails/DoctorDetails'
-
 // css
 import styles from './NewAppointment.module.css'
 
-const NewAppointment = () => {
+const NewAppointment = (props) => {
+  const [appointmentFormData, setAppointmentFormData] = useState({
+    date: '',
+    time: '',
+    reason: '',
+    mode: 'In Person'
+  })
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    props.handleAddAppointment(appointmentFormData)
+  }
+
+  const handleChange = evt => {
+    setAppointmentFormData({...appointmentFormData, [evt.target.name]: evt.target.value})
+  }
+
   return (
     < main className={styles.container}>
-      <form>
-        <h1>New Appointment</h1>
-        <label>Patient</label>
-        <input 
-        required
-        type='text'
-        name='patient'
-        value={''}
-        />
-        <label>Doctor</label>
-        <input 
-        required
-        type='text'
-        name='doctor'
-        value={''}
-        />
+      <form onSubmit={handleSubmit}>
+        <h2>Create an appointment with Dr. Austin</h2>
         <label>Date</label>
         <input 
         required
         type='date'
         name='date'
-        value={''}
+        value={appointmentFormData.date}
+        onChange={handleChange}
         />
         <label>Time</label>
         <input 
         required
         type='time'
         name='time'
-        value={''}
+        value={appointmentFormData.time}
+        onChange={handleChange}
         />
         <label>In-Person/Video</label>
-        <select name='mode'>
-          <option value='In-Person'>In-Person</option>
-          <option value='Video'>Video</option>
+        <select name='mode' value={appointmentFormData.mode} onChange={handleChange}> 
+          <option value="In Person" >In Person</option>
+          <option value="Phone Call" >Phone Call</option>          
         </select>
         <label>Reason for Visit</label>
         <textarea
           required
           type='text'
           name='reason'
-          value={''}
+          value={appointmentFormData.reason}
+          onChange={handleChange}
         />
+        <button type='submit'>CREATE APPOINTMENT</button>
       </form>
     </main>
   )

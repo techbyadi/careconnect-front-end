@@ -18,6 +18,7 @@ const AppointmentCard = ({ appointment }) => {
           <p>{appointment.date}</p>
           <p>{appointment.time}</p>
           <p>{appointment.reason}</p>
+          <p>{appointment.mode}</p>
           <p>DOCTOR WILL GO HERE</p>
           <NavLink to='/appointment/edit' state={appointment}>
             <button>Edit</button>
@@ -26,8 +27,5 @@ const AppointmentCard = ({ appointment }) => {
       </main>
   )
 }
-
-
-
 
 export default AppointmentCard
