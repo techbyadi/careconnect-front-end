@@ -9,8 +9,6 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AppointmentList from './pages/AppointmentList/AppointmentList'
-import NewAppointment from './pages/NewAppointment/NewAppointment'
-
 
 // components
 import NavBar from './components/NavBar/NavBar'
