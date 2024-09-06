@@ -1,5 +1,5 @@
 // npm modules
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -9,6 +9,9 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AppointmentList from './pages/AppointmentList/AppointmentList'
+import NewAppointment from './pages/NewAppointment/NewAppointment'
+import EditAppointment from './pages/EditAppointment/EditAppointment'
+
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -16,6 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as appointmentService from './services/appointmentService'
 import * as doctorService from './services/doctorService'
 
 // styles
@@ -24,6 +28,15 @@ import './App.css'
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  const [appointments, setAppointments] = useState([])
+
+  useEffect(() => {
+    const fetchAllAppointments = async () => {
+      const appointmentsData = await appointmentService.index()
+      setAppointments(appointmentsData)
+    }
+    if (user) fetchAllAppointments()
+  }, [user])
   const [doctors, setDoctors] = useState([])
   const [searchResults, setSearchResults] = useState([])
 
@@ -101,7 +114,15 @@ function App() {
           path="/appointments"
           element={
             <ProtectedRoute user={user}>
-              <AppointmentList/>
+              <AppointmentList appointments={appointments}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/appointment/edit'
+          element={
+            <ProtectedRoute user={user} >
+              <EditAppointment/>
             </ProtectedRoute>
           }
         />
