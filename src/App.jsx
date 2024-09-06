@@ -27,15 +27,31 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const [doctors, setDoctors] = useState([])
+  const [searchResults, setSearchResults] = useState([])
+
 
   useEffect(()=> {
     const fetchAllDoctors = async () => {
       const doctorsData = await doctorService.index()
-      console.log("List of doctors:", doctorsData);
       setDoctors(doctorsData)
     }
     fetchAllDoctors()
   }, [])
+
+  const handleDoctorSearch = (formData) => {
+    const filteredDoctorResults = doctors.filter(doctor => {
+      const locationMatch = formData.location 
+        ? doctor.location.toLowerCase().includes(formData.location.toLowerCase())
+        : false
+  
+      const specializationMatch = formData.specialization 
+        ? doctor.specialization.toLowerCase().includes(formData.specialization.toLowerCase())
+        : false
+  
+      return locationMatch || specializationMatch
+    })
+    setSearchResults(filteredDoctorResults);
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -51,7 +67,13 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} doctors={doctors} />} />
+        <Route path="/" element={
+
+        <Landing 
+        user={user} doctors={searchResults.length ? searchResults : doctors} 
+        handleDoctorSearch = {handleDoctorSearch}
+        />} 
+        />
         <Route
           path="/profiles"
           element={
@@ -85,14 +107,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/appointments/new"
-          element={
-            <ProtectedRoute user={user}>
-              <NewAppointment/>
-            </ProtectedRoute>
-          }
-        />
+
       </Routes>
     </>
   )
