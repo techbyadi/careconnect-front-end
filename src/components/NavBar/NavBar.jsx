@@ -22,9 +22,6 @@ const NavBar = ({ user, handleLogout }) => {
         <NavLink to="/appointments">MY APPOINTMENTS</NavLink>
       </li>
       <li>
-        <NavLink to="/appointments/new">NEW APPOINTMENT</NavLink>
-      </li>
-      <li>
         <NavLink to="/auth/logout" onClick={handleLogout}>LOG OUT</NavLink>
       </li>
     </ul>

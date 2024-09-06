@@ -20,6 +20,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as appointmentService from './services/appointmentService'
+import * as doctorService from './services/doctorService'
 
 // styles
 import './App.css'
@@ -36,6 +37,32 @@ function App() {
     }
     if (user) fetchAllAppointments()
   }, [user])
+  const [doctors, setDoctors] = useState([])
+  const [searchResults, setSearchResults] = useState([])
+
+
+  useEffect(()=> {
+    const fetchAllDoctors = async () => {
+      const doctorsData = await doctorService.index()
+      setDoctors(doctorsData)
+    }
+    fetchAllDoctors()
+  }, [])
+
+  const handleDoctorSearch = (formData) => {
+    const filteredDoctorResults = doctors.filter(doctor => {
+      const locationMatch = formData.location 
+        ? doctor.location.toLowerCase().includes(formData.location.toLowerCase())
+        : false
+  
+      const specializationMatch = formData.specialization 
+        ? doctor.specialization.toLowerCase().includes(formData.specialization.toLowerCase())
+        : false
+  
+      return locationMatch || specializationMatch
+    })
+    setSearchResults(filteredDoctorResults);
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -51,7 +78,13 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={
+
+        <Landing 
+        user={user} doctors={searchResults.length ? searchResults : doctors} 
+        handleDoctorSearch = {handleDoctorSearch}
+        />} 
+        />
         <Route
           path="/profiles"
           element={
@@ -93,14 +126,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/appointments/new"
-          element={
-            <ProtectedRoute user={user}>
-              <NewAppointment/>
-            </ProtectedRoute>
-          }
-        />
+
       </Routes>
     </>
   )
