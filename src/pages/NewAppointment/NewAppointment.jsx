@@ -1,6 +1,9 @@
 // npm modules
 import { useState } from 'react'
 
+// components
+import DoctorDetails from '../DoctorDetails/DoctorDetails'
+
 // css
 import styles from './NewAppointment.module.css'
 

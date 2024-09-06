@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-const DoctorDeatils =  ({doctor, docDetailsRef}) => {
+const DoctorDetails =  ({doctor, docDetailsRef}) => {
   const [open, setOpen] = React.useState(false); 
   const handleClose = () => setOpen(false);
   
@@ -55,4 +55,4 @@ const DoctorDeatils =  ({doctor, docDetailsRef}) => {
   )
 }
 
-export default DoctorDeatils
+export default DoctorDetails
