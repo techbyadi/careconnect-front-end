@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useImperativeHandle } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -21,7 +22,12 @@ const style = {
 const DoctorDetails =  ({doctor, docDetailsRef}) => {
   const [open, setOpen] = React.useState(false); 
   const handleClose = () => setOpen(false);
-  
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/appointments', { doctor });
+  };
+
   useImperativeHandle(docDetailsRef, () => ({
     handleOpen () {
       setOpen(true)
@@ -45,6 +51,10 @@ const DoctorDetails =  ({doctor, docDetailsRef}) => {
           <h3>🩺 {doctor.specialization}</h3>
           <h4>📍{doctor.location}</h4>
         </header>
+        <br />
+        <Button variant="contained" onClick={handleClick}>
+          Book an Appointment
+          </Button>
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           Reviews will go here 
