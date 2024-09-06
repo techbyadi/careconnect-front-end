@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AppointmentList from './pages/AppointmentList/AppointmentList'
 import NewAppointment from './pages/NewAppointment/NewAppointment'
+import EditAppointment from './pages/EditAppointment/EditAppointment'
 
 
 // components
@@ -18,6 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as appointmentService from './services/appointmentService'
 
 // styles
 import './App.css'
@@ -25,6 +27,15 @@ import './App.css'
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  const [appointments, setAppointments] = useState([])
+
+  useEffect(() => {
+    const fetchAllAppointments = async () => {
+      const appointmentsData = await appointmentService.index()
+      setAppointments(appointmentsData)
+    }
+    if (user) fetchAllAppointments()
+  }, [user])
 
   const handleLogout = () => {
     authService.logout()
@@ -70,7 +81,15 @@ function App() {
           path="/appointments"
           element={
             <ProtectedRoute user={user}>
-              <AppointmentList/>
+              <AppointmentList appointments={appointments}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/appointment/edit'
+          element={
+            <ProtectedRoute user={user} >
+              <EditAppointment/>
             </ProtectedRoute>
           }
         />
