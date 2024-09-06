@@ -106,6 +106,15 @@ function App() {
               <AppointmentList/>
             </ProtectedRoute>
           }
+
+        />
+        <Route
+          path="/appointments/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewAppointment/>
+            </ProtectedRoute>
+          }
         />
 
       </Routes>

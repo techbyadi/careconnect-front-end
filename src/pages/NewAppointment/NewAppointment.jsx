@@ -1,12 +1,57 @@
+// npm modules
+import { useState } from 'react'
+
 // css
 import styles from './NewAppointment.module.css'
 
-const AppointmentList = () => {
+const NewAppointment = () => {
   return (
     < main className={styles.container}>
-      <h1>Create a new appoitment</h1>
+      <form>
+        <h1>New Appointment</h1>
+        <label>Patient</label>
+        <input 
+        required
+        type='text'
+        name='patient'
+        value={''}
+        />
+        <label>Doctor</label>
+        <input 
+        required
+        type='text'
+        name='doctor'
+        value={''}
+        />
+        <label>Date</label>
+        <input 
+        required
+        type='date'
+        name='date'
+        value={''}
+        />
+        <label>Time</label>
+        <input 
+        required
+        type='time'
+        name='time'
+        value={''}
+        />
+        <label>In-Person/Video</label>
+        <select name='mode'>
+          <option value='In-Person'>In-Person</option>
+          <option value='Video'>Video</option>
+        </select>
+        <label>Reason for Visit</label>
+        <textarea
+          required
+          type='text'
+          name='reason'
+          value={''}
+        />
+      </form>
     </main>
   )
 }
 
-export default AppointmentList
+export default NewAppointment
