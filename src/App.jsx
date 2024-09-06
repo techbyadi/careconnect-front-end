@@ -64,6 +64,15 @@ function App() {
     setSearchResults(filteredDoctorResults);
   }
 
+  const handleAddAppointment = async (appointmentFormData) => {
+    console.log(`This is app.jsx : ${appointmentFormData}`);
+    
+    const newAppointment = await appointmentService.create(appointmentFormData)
+    
+    setAppointments([newAppointment, ...appointments])
+    navigate('/appointments')
+  }
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -123,6 +132,15 @@ function App() {
           element={
             <ProtectedRoute user={user} >
               <EditAppointment/>
+            </ProtectedRoute>
+          }
+
+        />
+        <Route
+          path="/appointments/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewAppointment handleAddAppointment={handleAddAppointment} />
             </ProtectedRoute>
           }
         />

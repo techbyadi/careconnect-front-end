@@ -15,6 +15,25 @@ async function index() {
   }
 }
 
+async function create(appointmentFormData) {
+  try {
+    console.log(`This is appointmentservice.js : ${appointmentFormData}`)
+    
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(appointmentFormData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
-  index
+  index,
+  create
 }
