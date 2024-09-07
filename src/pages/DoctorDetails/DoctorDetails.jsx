@@ -5,18 +5,26 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useImperativeHandle } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DoctorInfo from '../../components/DoctorInfo/DoctorInfo';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
-  height: 400,
+  width: 500,
+  height: 500,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  overflow: 'hidden',
+};
+
+const contentStyle = {
+  maxHeight: '100%', 
+  overflowY: 'scroll',
+  padding: '5px',
 };
 
 const DoctorDetails =  ({doctor, docDetailsRef}) => {
@@ -25,7 +33,7 @@ const DoctorDetails =  ({doctor, docDetailsRef}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/appointments', { doctor });
+    navigate('/appointments/new',  { state: {doctor} });
   };
 
   useImperativeHandle(docDetailsRef, () => ({
@@ -43,14 +51,9 @@ const DoctorDetails =  ({doctor, docDetailsRef}) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Box sx={contentStyle}>
           <Typography id="modal-modal-title" variant="h6" component="h2"> 
-        <header>
-          <span>
-            <h1>{doctor.name}</h1>
-          </span>
-          <h3>🩺 {doctor.specialization}</h3>
-          <h4>📍{doctor.location}</h4>
-        </header>
+          <DoctorInfo doctor={doctor}/>
         <br />
         <Button variant="contained" onClick={handleClick}>
           Book an Appointment
@@ -59,6 +62,7 @@ const DoctorDetails =  ({doctor, docDetailsRef}) => {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           Reviews will go here 
           </Typography>
+          </Box>
         </Box>
       </Modal>
     </div>

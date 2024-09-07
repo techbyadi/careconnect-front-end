@@ -1,10 +1,17 @@
 // npm modules
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom';
+
 
 // css
 import styles from './NewAppointment.module.css'
 
+//components
+
+
 const NewAppointment = (props) => {
+  const location = useLocation();
+
   const [appointmentFormData, setAppointmentFormData] = useState({
     appointmentDate: '',
     time: '',
@@ -24,7 +31,7 @@ const NewAppointment = (props) => {
   return (
     < main className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <h2>Create an appointment with Dr. Austin</h2>
+        <h3>Create an appointment with {location.state.doctor.name}</h3>
         <label>Date</label>
         <input 
         required

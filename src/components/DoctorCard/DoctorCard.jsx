@@ -1,16 +1,15 @@
 // npm modules
 import { NavLink } from "react-router-dom";
-import { useRef } from 'react';
+import { useRef } from "react";
 
 //pages
-import DoctorDetails from '../../pages/DoctorDetails/DoctorDetails'
-
+import DoctorDetails from "../../pages/DoctorDetails/DoctorDetails";
+import DoctorInfo from "../../components/DoctorInfo/DoctorInfo";
 
 // css
 import styles from "./DoctorCard.module.css";
 
 const DoctorCard = ({ doctor }) => {
-
   const docDetailsRef = useRef(null);
 
   const showDoctorDetails = () => {
@@ -21,19 +20,16 @@ const DoctorCard = ({ doctor }) => {
 
   return (
     <>
-    <NavLink to='#' onClick={showDoctorDetails}>
+      <NavLink to="#" onClick={showDoctorDetails}>
       <article className={styles.container}>
-        <img src={doctor.photo} alt="Doctor's photo" />
-        <header>
-          <span>
-            <h1>{doctor.name}</h1>
-          </span>
-          <p>🩺 {doctor.specialization}</p>
-          <p>📍{doctor.location}</p>
+      <header>
+      <DoctorInfo doctor={doctor} />
         </header>
+     
       </article>
-    </NavLink>
-    <DoctorDetails doctor={doctor} docDetailsRef= {docDetailsRef}/>
+        
+      </NavLink>
+      <DoctorDetails doctor={doctor} docDetailsRef={docDetailsRef} />
     </>
   );
 };
