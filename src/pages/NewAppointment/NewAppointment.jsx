@@ -6,7 +6,7 @@ import styles from './NewAppointment.module.css'
 
 const NewAppointment = (props) => {
   const [appointmentFormData, setAppointmentFormData] = useState({
-    date: '',
+    appointmentDate: '',
     time: '',
     reason: '',
     mode: 'In Person'
@@ -29,8 +29,8 @@ const NewAppointment = (props) => {
         <input 
         required
         type='date'
-        name='date'
-        value={appointmentFormData.date}
+        name='appointmentDate'
+        value={appointmentFormData.appointmentDate}
         onChange={handleChange}
         />
         <label>Time</label>
