@@ -11,7 +11,8 @@ import styles from './NewAppointment.module.css'
 
 const NewAppointment = (props) => {
   const location = useLocation();
-
+  console.log("state on new appoitment page", location.state.selectedTime);
+  
   const [appointmentFormData, setAppointmentFormData] = useState({
     appointmentDate: '',
     time: '',
@@ -40,7 +41,7 @@ const NewAppointment = (props) => {
         value={appointmentFormData.appointmentDate}
         onChange={handleChange}
         />
-        <label>Time</label>
+        <label>Time:  {location.state.selectedTime}</label>
         <input 
         required
         type='time'
@@ -48,7 +49,7 @@ const NewAppointment = (props) => {
         value={appointmentFormData.time}
         onChange={handleChange}
         />
-        <label>In-Person/Video</label>
+        <label>Appointment Type</label>
         <select name='mode' value={appointmentFormData.mode} onChange={handleChange}> 
           <option value="In Person" >In Person</option>
           <option value="Phone Call" >Phone Call</option>          

@@ -40,7 +40,7 @@ const EditAppointment = (props) => {
         value={appointmentFormData.time}
         onChange={handleChange}
         />
-        <label>In-Person/Video</label>
+        <label>Appointment Type</label>
         <select name='mode' value={appointmentFormData.mode} onChange={handleChange}> 
           <option value="In Person" >In Person</option>
           <option value="Phone Call" >Phone Call</option>          

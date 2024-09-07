@@ -7,6 +7,11 @@ import { useImperativeHandle } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DoctorInfo from '../../components/DoctorInfo/DoctorInfo';
 
+
+// css
+import styles from "./DoctorDetails.module.css";
+
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -32,8 +37,8 @@ const DoctorDetails =  ({doctor, docDetailsRef}) => {
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/appointments/new',  { state: {doctor} });
+  const handleClick = (selectedTime) => {
+    navigate('/appointments/new',  { state: {doctor, selectedTime} });
   };
 
   useImperativeHandle(docDetailsRef, () => ({
@@ -55,7 +60,32 @@ const DoctorDetails =  ({doctor, docDetailsRef}) => {
           <Typography id="modal-modal-title" variant="h6" component="h2"> 
           <DoctorInfo doctor={doctor}/>
         <br />
-        <Button variant="contained" onClick={handleClick}>
+        <hr/>
+        <h3>Available Appointment Slots</h3>
+        <h4>{new Date(doctor.date).toDateString()}</h4>
+          <div>
+            {doctor.timeSlots.map((slot, index) => (
+              slot.isAvailable ? (
+                <button  className={styles.button}
+                  key={index}
+                  onClick={()=> handleClick(slot.time)}
+                >
+                  {slot.time}
+                </button>
+              ) : (
+                <button className={styles.button}
+                  key={index}
+                  style={{ backgroundColor: '#E0E0E0', cursor: 'not-allowed' }}
+                  disabled
+                >
+                  {slot.time}
+                </button>
+              )
+            ))}
+          </div>
+          <hr />
+          <br />
+        <Button variant="contained" onClick={()=> handleClick(null)}>
           Book an Appointment
           </Button>
           </Typography>
