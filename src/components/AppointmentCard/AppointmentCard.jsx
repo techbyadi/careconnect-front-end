@@ -1,13 +1,10 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
 
-// components
-import * as appointmentService from '../../services/appointmentService'
-
 // css
 import styles from './AppointmentCard.module.css'
 
-const AppointmentCard = ({ appointment }, props) => {
+const AppointmentCard = ({ appointment, handleDeleteAppointment}) => {
   return (
     <main>
         <article className={styles.container}>
@@ -23,7 +20,7 @@ const AppointmentCard = ({ appointment }, props) => {
           <NavLink to='/appointment/edit' state={appointment}>
             <button>Edit</button>
           </NavLink>
-          <button onClick={() => props.handleDeleteAppointment(appointment._id)}>
+          <button onClick={() => handleDeleteAppointment(appointment._id)}>
             DELETE
           </button>
         </article>
