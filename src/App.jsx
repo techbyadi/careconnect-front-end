@@ -135,10 +135,13 @@ function App() {
           path="/appointments"
           element={
             <ProtectedRoute user={user}>
-              <AppointmentList appointments={appointments}/>
+              <AppointmentList appointments={appointments}
+              user={user} 
+              handleDeleteAppointment={handleDeleteAppointment} />
             </ProtectedRoute>
           }
         />
+        
         <Route 
           path='/appointment/edit'
           element={
@@ -153,18 +156,6 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <NewAppointment handleAddAppointment={handleAddAppointment} />
-            </ProtectedRoute>
-          }
-        />
-
-                <Route 
-          path='/appointments'
-          element={
-            <ProtectedRoute user={user} >
-              <AppointmentList
-                user={user} 
-                handleDeleteAppointment={handleDeleteAppointment} 
-              />
             </ProtectedRoute>
           }
         />
