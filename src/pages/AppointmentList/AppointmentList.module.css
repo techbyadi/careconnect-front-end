@@ -24,3 +24,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+h1{
+  text-align: center;
+}

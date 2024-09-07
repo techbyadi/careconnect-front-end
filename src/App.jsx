@@ -65,7 +65,6 @@ function App() {
   }
 
   const handleAddAppointment = async (appointmentFormData) => {
-    console.log(`This is app.jsx : ${appointmentFormData}`);
     
     const newAppointment = await appointmentService.create(appointmentFormData)
     
