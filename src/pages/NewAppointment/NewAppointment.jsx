@@ -1,10 +1,18 @@
 // npm modules
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom';
+
 
 // css
 import styles from './NewAppointment.module.css'
 
+//components
+
+
 const NewAppointment = (props) => {
+  const location = useLocation();
+  console.log("state on new appoitment page", location.state.selectedTime);
+  
   const [appointmentFormData, setAppointmentFormData] = useState({
     appointmentDate: '',
     time: '',
@@ -24,7 +32,7 @@ const NewAppointment = (props) => {
   return (
     < main className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <h2>Create an appointment with Dr. Austin</h2>
+        <h3>Create an appointment with {location.state.doctor.name}</h3>
         <label>Date</label>
         <input 
         required
@@ -33,7 +41,7 @@ const NewAppointment = (props) => {
         value={appointmentFormData.appointmentDate}
         onChange={handleChange}
         />
-        <label>Time</label>
+        <label>Time:  {location.state.selectedTime}</label>
         <input 
         required
         type='time'
@@ -41,7 +49,7 @@ const NewAppointment = (props) => {
         value={appointmentFormData.time}
         onChange={handleChange}
         />
-        <label>In-Person/Video</label>
+        <label>Appointment Type</label>
         <select name='mode' value={appointmentFormData.mode} onChange={handleChange}> 
           <option value="In Person" >In Person</option>
           <option value="Phone Call" >Phone Call</option>          
