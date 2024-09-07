@@ -25,7 +25,6 @@ const DoctorCard = ({ doctor }) => {
       <header>
       <DoctorInfo doctor={doctor} />
         </header>
-     
       </article>
         
       </NavLink>
