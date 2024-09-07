@@ -32,8 +32,39 @@ async function create(appointmentFormData) {
     console.log(error)
   }
 }
+async function update(appointmentFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${appointmentFormData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(appointmentFormData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function deleteAppointment(appointmentId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${appointmentId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export {
   index,
-  create
+  create,
+  update,
+  deleteAppointment as delete,
 }

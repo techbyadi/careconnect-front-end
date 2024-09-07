@@ -7,11 +7,14 @@ import AppointmentCard from '../../components/AppointmentCard/AppointmentCard'
 const AppointmentList = (props) => {
   
   return (
-    <main className={styles.container}>
-      {props.appointments.map(appointment =>
-        <AppointmentCard appointment={appointment} key={appointment._id} />
-      )}
-    </main>
+    <>
+      <h1>MY Appointments</h1>
+      <main className={styles.container}>
+        {props.appointments.map(appointment =>
+          <AppointmentCard appointment={appointment} key={appointment._id} />
+        )}
+      </main>
+    </>
   )
 }
 

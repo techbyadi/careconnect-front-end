@@ -83,6 +83,18 @@ function App() {
     setUser(authService.getUser())
   }
 
+  const handleUpdateAppointment = async (appointmentFormData) => {
+    const updatedAppointment = await appointmentService.update(appointmentFormData)
+    setAppointments(appointments.map(appointment => appointment._id === updatedAppointment._id ? updatedAppointment : appointment))
+    navigate('/appointments')
+  }
+
+  const handleDeleteAppointment = async (appointmentId) => {
+    const deletedAppointment = await appointmentService.delete(appointmentId)
+    setAppointments(appointments.filter(appointment => appointment._id !== deletedAppointment._id))
+    navigate('/appointments')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -131,7 +143,7 @@ function App() {
           path='/appointment/edit'
           element={
             <ProtectedRoute user={user} >
-              <EditAppointment/>
+              <EditAppointment handleUpdateAppointment={handleUpdateAppointment} />
             </ProtectedRoute>
           }
 
@@ -141,6 +153,18 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <NewAppointment handleAddAppointment={handleAddAppointment} />
+            </ProtectedRoute>
+          }
+        />
+
+                <Route 
+          path='/appointments'
+          element={
+            <ProtectedRoute user={user} >
+              <AppointmentList
+                user={user} 
+                handleDeleteAppointment={handleDeleteAppointment} 
+              />
             </ProtectedRoute>
           }
         />
