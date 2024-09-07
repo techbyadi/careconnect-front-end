@@ -5,7 +5,6 @@ import styles from './AppointmentList.module.css'
 import AppointmentCard from '../../components/AppointmentCard/AppointmentCard'
 
 const AppointmentList = (props) => {
-  console.log("Props on app list page", props.handleDeleteAppointment);
   return (
     <>
       <h1>MY Appointments</h1>
