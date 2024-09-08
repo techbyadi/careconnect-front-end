@@ -21,7 +21,7 @@ const NewReview = (props) => {
   }
 
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
+    <form  className={styles.container} onSubmit={handleSubmit}>
       
       <textarea 
         required
@@ -30,7 +30,7 @@ const NewReview = (props) => {
         placeholder='Add a Review'
         onChange={handleChange}
       />
-      <label>Rating</label>
+      <label>Rating
         <select
         required
         name='rating'
@@ -42,6 +42,7 @@ const NewReview = (props) => {
           <option value="4" >4</option>
           <option value="5" >5</option>                    
         </select>
+        </label>
       <button type="submit">Submit Review</button>
     </form>
   )

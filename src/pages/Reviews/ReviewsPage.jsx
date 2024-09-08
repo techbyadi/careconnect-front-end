@@ -6,10 +6,11 @@ import * as doctorService from '../../services/doctorService'
 
 // components
 import NewReview from "../../components/NewReview/NewReview";
-import DoctorCard from '../../components/DoctorCard/DoctorCard';
+import DoctorInfo from '../../components/DoctorInfo/DoctorInfo';
+import ReviewCard from '../../components/ReviewCard/ReviewCard';
 
 // css
-import styles from "./NewReview.module.css"
+import styles from "./ReviewsPage.module.css"
 
 const NewReviewPage = (doctor, setDoctor) => {
   const location = useLocation();
@@ -21,12 +22,22 @@ const NewReviewPage = (doctor, setDoctor) => {
 
   return (
     <main className={styles.container}>
-      <section>
-      <header>
-      <DoctorCard doctor={location.state.doctor} />
+      <article>
+        <header>
+      <DoctorInfo doctor={location.state.doctor} />
         </header>
+      </article>
+        <section>
+          <NewReview handleAddReview={handleAddReview}/>
+        </section>
+      <section>
+      {location.state.doctor.reviews.map((review) =>
+        <ReviewCard
+        key={review._id}
+        review={review}
+        />
+          )}
       </section>
-      <NewReview handleAddReview={handleAddReview}/>
     </main>
   )
 }

@@ -11,7 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AppointmentList from './pages/AppointmentList/AppointmentList'
 import NewAppointment from './pages/NewAppointment/NewAppointment'
 import EditAppointment from './pages/EditAppointment/EditAppointment'
-import NewReviewPage from './pages/NewReview/NewReviewPage'
+import ReviewsPage from './pages/Reviews/ReviewsPage'
 
 
 // components
@@ -163,7 +163,7 @@ function App() {
           path='/reviews'
           element={
             <ProtectedRoute user={user}>
-              <NewReviewPage/>
+              <ReviewsPage user={user}/>
             </ProtectedRoute>
           }
         />
