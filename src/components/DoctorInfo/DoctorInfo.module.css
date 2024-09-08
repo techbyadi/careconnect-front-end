@@ -21,6 +21,34 @@
   margin-top: 20px;
   font-size: 22px;
 }
+.container span {
+  display: flex;
+  align-items: center;
+  margin: 7px 0px 12px 0px;
+  justify-content: space-between;
+}
+
+
+
+.container span img {
+  margin: 0;
+  width: 32px;
+  height: 32px;
+  opacity: .8;
+  padding: 3px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.container h1 {
+  margin: 0;
+  font-size: 19px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
 
 .container p {
   width: 100%;
@@ -38,4 +66,15 @@
 
 .container p:first-of-type {
   margin-top: 10px;
+}
+
+.container div > img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.container div section img {
+  width: 14px;
+  height: 14px;
 }

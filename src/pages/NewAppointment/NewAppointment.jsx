@@ -1,46 +1,24 @@
 // npm modules
 import { useState } from "react";
-import * as React from "react";
-import { useLocation, } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // css
 import styles from "./NewAppointment.module.css";
-import DoctorAvailabilityModal from "../../components/DoctorAvailabilityModal/DoctorAvailabilityModal";
 
 //components
+import DoctorAvailabilityModal from "../../components/DoctorAvailabilityModal/DoctorAvailabilityModal";
+import DoctorInfo from "../../components/DoctorInfo/DoctorInfo";
+
 
 const NewAppointment = (props) => {
   const location = useLocation();
   const doctor = location.state.doctor;
   const selectedDate = location.state.selectedDate;
   const selectedTime = location.state.selectedTime;
-  console.log(
-    "state on new appoitment page: time - ",
-    location.state.selectedTime
-  );
-  console.log(
-    "state on new appoitment page: date - ",
-    location.state.selectedDate
-  );
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    height: 250,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-    overflow: "hidden",
-  };
-
 
   const [appointmentFormData, setAppointmentFormData] = useState({
     appointmentDate: selectedDate,
@@ -73,16 +51,18 @@ const NewAppointment = (props) => {
 
   return (
     <main className={styles.container}>
-       <DoctorAvailabilityModal
+      <DoctorAvailabilityModal
         open={open}
         handleClose={handleClose}
         doctor={doctor}
         handleClick={handleClick}
       />
+
       <form onSubmit={handleSubmit}>
-        <h3>Create an appointment with {doctor.name}</h3>
+        <DoctorInfo doctor={location.state.doctor} />
+        <br /> <br />
         <label>
-          Date: {new Date(appointmentFormData.appointmentDate).toDateString()}{" "}
+          Date: {new Date(appointmentFormData.appointmentDate).toDateString()}
         </label>
         <label>Time: {appointmentFormData.time}</label>
         <br />
