@@ -11,13 +11,15 @@ import styles from './NewAppointment.module.css'
 
 const NewAppointment = (props) => {
   const location = useLocation();
+  const doctor = location.state.doctor;
   console.log("state on new appoitment page", location.state.selectedTime);
   
   const [appointmentFormData, setAppointmentFormData] = useState({
     appointmentDate: '',
     time: '',
     reason: '',
-    mode: 'In Person'
+    mode: 'In Person',
+    doctor: doctor._id
   })
 
   const handleSubmit = evt => {
@@ -32,7 +34,7 @@ const NewAppointment = (props) => {
   return (
     < main className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <h3>Create an appointment with {location.state.doctor.name}</h3>
+        <h3>Create an appointment with {doctor.name}</h3>
         <label>Date</label>
         <input 
         required

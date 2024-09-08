@@ -1,3 +1,5 @@
+
+
 // npm modules
 import { NavLink } from 'react-router-dom'
 
@@ -13,7 +15,7 @@ const AppointmentCard = ({ appointment, handleDeleteAppointment}) => {
       <article className={styles.container}>
         <header>
           <span>
-            <h1>DOCTOR WILL GO HERE</h1>
+            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {appointment.doctor.name}</h1>
             <div>
               <NavLink to='/appointment/edit' state={appointment}>
                 <Icon category='Edit'/>
@@ -24,10 +26,9 @@ const AppointmentCard = ({ appointment, handleDeleteAppointment}) => {
             </div>
           </span>
         </header>
-        <p>Reason: {appointment.reason}</p>
+        <p>Time: {appointment.time}</p> <br />
+        <p>Reason: {appointment.reason}</p> <br />
         <p>Type: {appointment.mode}</p>
-        <p>Date: {new Date(appointment.appointmentDate).toISOString().split('T')[0]}</p>
-        <p>Time:{appointment.time}</p>
       </article>
     </main>
   )
