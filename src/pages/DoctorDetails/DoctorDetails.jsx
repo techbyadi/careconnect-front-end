@@ -39,6 +39,9 @@ const DoctorDetails = ({ doctor, docDetailsRef }) => {
   const handleClick = (selectedTime) => {
     navigate("/appointments/new", { state: { doctor, selectedTime } });
   };
+  const handleClickReview = () => {
+    navigate('/reviews',  { state: {doctor} });
+  };
 
   useImperativeHandle(docDetailsRef, () => ({
     handleOpen() {
@@ -66,6 +69,9 @@ const DoctorDetails = ({ doctor, docDetailsRef }) => {
               <Button variant="contained" onClick={() => handleClick(null)}>
                 Book an Appointment
               </Button>
+              <Button variant="contained" onClick={()=> handleClickReview(null)}>
+          Leave a Review
+          </Button>
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Reviews will go here

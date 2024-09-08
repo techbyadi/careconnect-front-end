@@ -11,6 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AppointmentList from './pages/AppointmentList/AppointmentList'
 import NewAppointment from './pages/NewAppointment/NewAppointment'
 import EditAppointment from './pages/EditAppointment/EditAppointment'
+import ReviewsPage from './pages/Reviews/ReviewsPage'
 
 
 // components
@@ -153,6 +154,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <NewAppointment handleAddAppointment={handleAddAppointment} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/reviews'
+          element={
+            <ProtectedRoute user={user}>
+              <ReviewsPage user={user}/>
             </ProtectedRoute>
           }
         />
