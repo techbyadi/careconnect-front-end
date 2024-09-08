@@ -17,11 +17,12 @@ const NewReview = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     props.handleAddReview(reviewFormData)
-    setReviewFormData({ text: '' })
+    setReviewFormData({ content: '' })
   }
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
+      
       <textarea 
         required
         name="content"
@@ -30,7 +31,11 @@ const NewReview = (props) => {
         onChange={handleChange}
       />
       <label>Rating</label>
-        <select name='rating' value={reviewFormData.rating} onChange={handleChange}> 
+        <select
+        required
+        name='rating'
+        value={reviewFormData.rating}
+        onChange={handleChange}> 
           <option value="1" >1</option>
           <option value="2" >2</option>
           <option value="3" >3</option>
