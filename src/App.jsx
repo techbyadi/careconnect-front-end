@@ -36,12 +36,12 @@ function App() {
       setAppointments(appointmentsData)
     }
     if (user) fetchAllAppointments()
-  }, [user])
+  }, [user, appointments])
   const [doctors, setDoctors] = useState([])
   const [searchResults, setSearchResults] = useState([])
 
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchAllDoctors = async () => {
       const doctorsData = await doctorService.index()
       setDoctors(doctorsData)
@@ -51,23 +51,21 @@ function App() {
 
   const handleDoctorSearch = (formData) => {
     const filteredDoctorResults = doctors.filter(doctor => {
-      const locationMatch = formData.location 
+      const locationMatch = formData.location
         ? doctor.location.toLowerCase().includes(formData.location.toLowerCase())
         : false
-  
-      const specializationMatch = formData.specialization 
+
+      const specializationMatch = formData.specialization
         ? doctor.specialization.toLowerCase().includes(formData.specialization.toLowerCase())
         : false
-  
+
       return locationMatch || specializationMatch
     })
     setSearchResults(filteredDoctorResults);
   }
 
   const handleAddAppointment = async (appointmentFormData) => {
-    
     const newAppointment = await appointmentService.create(appointmentFormData)
-    
     setAppointments([newAppointment, ...appointments])
     navigate('/appointments')
   }
@@ -100,10 +98,10 @@ function App() {
       <Routes>
         <Route path="/" element={
 
-        <Landing 
-        user={user} doctors={searchResults.length ? searchResults : doctors} 
-        handleDoctorSearch = {handleDoctorSearch}
-        />} 
+          <Landing
+            user={user} doctors={searchResults.length ? searchResults : doctors}
+            handleDoctorSearch={handleDoctorSearch}
+          />}
         />
         <Route
           path="/profiles"
@@ -135,13 +133,13 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <AppointmentList appointments={appointments}
-              user={user} 
-              handleDeleteAppointment={handleDeleteAppointment} />
+                user={user}
+                handleDeleteAppointment={handleDeleteAppointment} />
             </ProtectedRoute>
           }
         />
-        
-        <Route 
+
+        <Route
           path='/appointment/edit'
           element={
             <ProtectedRoute user={user} >
