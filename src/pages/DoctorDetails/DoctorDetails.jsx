@@ -34,10 +34,11 @@ const contentStyle = {
 const DoctorDetails = ({ doctor, docDetailsRef }) => {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
+  
   const navigate = useNavigate();
 
-  const handleClick = (selectedTime) => {
-    navigate("/appointments/new", { state: { doctor, selectedTime } });
+  const handleClick = (selectedTime, selectedDate) => {
+    navigate("/appointments/new", { state: { doctor, selectedTime, selectedDate } });
   };
   const handleClickReview = () => {
     navigate('/reviews',  { state: {doctor} });

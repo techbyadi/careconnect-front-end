@@ -37,7 +37,7 @@ function App() {
       setAppointments(appointmentsData)
     }
     if (user) fetchAllAppointments()
-  }, [user, appointments])
+  }, [user])
   const [doctors, setDoctors] = useState([])
   const [searchResults, setSearchResults] = useState([])
 

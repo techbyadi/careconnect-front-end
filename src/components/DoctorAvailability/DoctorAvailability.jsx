@@ -8,13 +8,14 @@ const DoctorAvailability = ({ doctor, handleClick }) => {
       {doctor.availability.map((availability, index) => (
         <div key={index}>
           <h4>{new Date(availability.date).toDateString()}</h4>
+          
           <div>
             {availability.slots.map((slot, slotIndex) => (
               slot.isAvailable ? (
                 <button
                   className={styles.button}
                   key={slotIndex}
-                  onClick={() => handleClick(slot.time)}
+                  onClick={() => handleClick(slot.time, availability.date)}
                 >
                   {slot.time}
                 </button>
