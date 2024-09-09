@@ -4,15 +4,16 @@
   overflow: scroll;
   align-items: center;
   flex-direction: column;
-  background-color: var(--card-background);
 }
 
 .container article, .container > section {
   width: 100%;
-  padding: 21px;
   display: flex;
-  max-width: 700px;
+  max-width: 600px;
   flex-direction: column;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .container p {
@@ -63,7 +64,7 @@
   margin-left: 7px;
   border-radius: 5px;
   text-align: center;
-  border: 1px solid var(--border);
+  border: 1px solid black
 }
 
 .container span button, .container span a  {
@@ -75,7 +76,7 @@
   width: 100%;
   min-height: 140px;
   border-radius: 5px;
-  margin: 4px 0px 14px;
+  margin: 2px 0px 2px;
 }
 
 .container > section h1 {
