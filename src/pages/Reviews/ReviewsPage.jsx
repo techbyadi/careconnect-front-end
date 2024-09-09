@@ -13,7 +13,7 @@ import ReviewCard from '../../components/ReviewCard/ReviewCard';
 // css
 import styles from "./ReviewsPage.module.css"
 
-const ReviewsPage = () => {
+const ReviewsPage = (props) => {
   const location = useLocation()
   const [doctor, setDoctor] = useState({reviews: []})
 
@@ -22,8 +22,7 @@ const ReviewsPage = () => {
       const doctorData = await doctorService.show(location.state.doctor._id)
       setDoctor(doctorData)
     }
-    fetchDoctor()
-    
+    fetchDoctor()    
   }, [location.state.doctor])
 
   const handleAddReview = async reviewFormData => {
@@ -31,11 +30,21 @@ const ReviewsPage = () => {
     setDoctor({ ...doctor, reviews: [...doctor.reviews, newReview] })
   }
 
+  const publicComponents = (
+    <DoctorInfo doctor={location.state.doctor} />
+  )
+
+  const protectedComponents = (
+    <>
+    <DoctorInfo doctor={location.state.doctor} />
+    <NewReview handleAddReview={handleAddReview}/>
+    </>
+  )
+
   return (
     <main className={styles.container}>
       <section className='reviewSection'>
-        <DoctorInfo doctor={location.state.doctor} />
-        <NewReview handleAddReview={handleAddReview}/>
+        {props.user ? protectedComponents : publicComponents}        
       </section>
       <section>
       {doctor.reviews.map((review) =>
