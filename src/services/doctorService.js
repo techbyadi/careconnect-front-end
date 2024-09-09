@@ -12,6 +12,19 @@ async function index() {
   }
 }
 
+async function show(doctorId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${doctorId}`, {
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function createReview(doctorId, reviewFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${doctorId}/reviews`, {
@@ -30,5 +43,6 @@ async function createReview(doctorId, reviewFormData) {
 
 export {
   index,
+  show,
   createReview
 }

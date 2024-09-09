@@ -160,12 +160,9 @@ function App() {
         <Route
           path='/reviews'
           element={
-            <ProtectedRoute user={user}>
-              <ReviewsPage user={user}/>
-            </ProtectedRoute>
+            <ReviewsPage user={user}/>
           }
         />
-
       </Routes>
     </>
   )

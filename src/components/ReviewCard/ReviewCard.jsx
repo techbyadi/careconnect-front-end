@@ -9,9 +9,9 @@ const ReviewCard = (props) => {
           <span>
             <p>Review by {props.review.author.name}</p>
             <p>{props.review.rating} star out of 5</p>  
+            <h4>{props.review.content}</h4>
           </span>
         </header>
-      <h3>{props.review.content}</h3>
       </article>
     </main>
   )
