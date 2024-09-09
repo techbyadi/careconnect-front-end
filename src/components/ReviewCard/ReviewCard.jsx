@@ -1,7 +1,7 @@
 //css
 import styles from "./ReviewCard.module.css"
 
-const ReviewCard = (props) => {
+const ReviewCard = (props) => {  
   return (
     <main>
       <article className={styles.container}>
