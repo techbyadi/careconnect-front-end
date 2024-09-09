@@ -12,6 +12,7 @@ import AppointmentList from './pages/AppointmentList/AppointmentList'
 import NewAppointment from './pages/NewAppointment/NewAppointment'
 import EditAppointment from './pages/EditAppointment/EditAppointment'
 import ReviewsPage from './pages/Reviews/ReviewsPage'
+import EditReview from './pages/EditReview/EditReview'
 
 
 // components
@@ -93,6 +94,12 @@ function App() {
     navigate('/appointments')
   }
 
+  const handleUpdateReview = async (reviewFormData) => {
+    const updatedReview = await doctorService.updateReview(reviewFormData)
+    setDoctors(doctors.map(review => review._id === updatedReview._id ? updatedReview : review))
+    navigate('/appointments')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -147,8 +154,8 @@ function App() {
               <EditAppointment handleUpdateAppointment={handleUpdateAppointment} />
             </ProtectedRoute>
           }
-
         />
+        
         <Route
           path="/appointments/new"
           element={
@@ -161,6 +168,15 @@ function App() {
           path='/reviews'
           element={
             <ReviewsPage user={user}/>
+          }
+        />
+      
+      <Route
+          path='/review/edit'
+          element={
+            <ProtectedRoute user={user} >
+              <EditReview handleUpdateReview={handleUpdateReview} />
+            </ProtectedRoute>
           }
         />
       </Routes>

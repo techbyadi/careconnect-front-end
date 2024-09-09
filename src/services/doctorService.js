@@ -41,8 +41,26 @@ async function createReview(doctorId, reviewFormData) {
   }
 }
 
+async function updateReview(doctor, reviewFormData) {
+  try {
+    console.log('DOCTOR', doctor);
+    const res = await fetch(`${BASE_URL}/${doctor}/reviews`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reviewFormData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
   show,
-  createReview
+  createReview,
+  updateReview
 }

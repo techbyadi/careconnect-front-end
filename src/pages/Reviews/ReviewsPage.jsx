@@ -42,11 +42,12 @@ const ReviewsPage = () => {
         <ReviewCard
         key={review._id}
         review={review}
+        doctor={doctor}
         />
           )}
       </section>
     </main>
   )
 }
- 
+
 export default ReviewsPage;
