@@ -22,14 +22,10 @@ const NewReviewPage = (doctor, setDoctor) => {
 
   return (
     <main className={styles.container}>
-      <article>
-        <header>
-      <DoctorInfo doctor={location.state.doctor} />
-        </header>
-      </article>
-        <section>
-          <NewReview handleAddReview={handleAddReview}/>
-        </section>
+      <section className='reviewSection'>
+        <DoctorInfo doctor={location.state.doctor} />
+        <NewReview handleAddReview={handleAddReview}/>
+      </section>
       <section>
       {location.state.doctor.reviews.map((review) =>
         <ReviewCard

@@ -4,6 +4,9 @@ import { useState } from "react"
 // css
 import styles from './NewReview.module.css'
 
+// components
+import Icon from '../Icon/Icon'
+
 const NewReview = (props) => {
   const [reviewFormData, setReviewFormData] = useState({
     content: '',
@@ -22,7 +25,6 @@ const NewReview = (props) => {
 
   return (
     <form  className={styles.container} onSubmit={handleSubmit}>
-      
       <textarea 
         required
         name="content"
@@ -43,7 +45,7 @@ const NewReview = (props) => {
           <option value="5" >5</option>                    
         </select>
         </label>
-      <button type="submit">Submit Review</button>
+        <button type="submit"><Icon category='Create' /></button>
     </form>
   )
 }
