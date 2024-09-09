@@ -67,9 +67,20 @@ const EditAppointment = (props) => {
         <input
           disabled
           type="text"
-          name="appointmentDate"
+          name="appointmentDateForDisplay"
           value={
             new Date(appointmentFormData.appointmentDate).toDateString()
+          }
+          onChange={handleChange}
+        />
+        <label>Date</label>
+        <input
+          hidden
+          disabled
+          type="text"
+          name="appointmentDate"
+          value={
+            appointmentFormData.appointmentDate
           }
           onChange={handleChange}
         />

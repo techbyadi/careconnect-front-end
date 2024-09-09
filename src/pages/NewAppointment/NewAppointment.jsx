@@ -31,7 +31,7 @@ const NewAppointment = (props) => {
   const handleClick = (newSelectedTime, newSelectedDate) => {
     setAppointmentFormData({
       ...appointmentFormData,
-      appointmentDate: new Date(newSelectedDate).toISOString().split("T")[0],
+      appointmentDate: newSelectedDate,
       time: newSelectedTime,
     });
     handleClose();
