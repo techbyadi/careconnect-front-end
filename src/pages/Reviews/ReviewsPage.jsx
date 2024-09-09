@@ -41,11 +41,12 @@ const ReviewsPage = (props) => {
         <ReviewCard
         key={review._id}
         review={review}
+        doctor={doctor}
         />
           )}
       </section>
     </main>
   )
 }
- 
+
 export default ReviewsPage;
