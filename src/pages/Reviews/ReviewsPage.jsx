@@ -1,5 +1,6 @@
 // npm modules
 import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 // services
 import * as doctorService from '../../services/doctorService'
@@ -12,12 +13,22 @@ import ReviewCard from '../../components/ReviewCard/ReviewCard';
 // css
 import styles from "./ReviewsPage.module.css"
 
-const NewReviewPage = (doctor, setDoctor) => {
-  const location = useLocation();
+const ReviewsPage = () => {
+  const location = useLocation()
+  const [doctor, setDoctor] = useState({reviews: []})
+
+  useEffect(() => {
+    const fetchDoctor = async() => {
+      const doctorData = await doctorService.show(location.state.doctor._id)
+      setDoctor(doctorData)
+    }
+    fetchDoctor()
+    
+  }, [location.state.doctor])
 
   const handleAddReview = async reviewFormData => {
-    const newReview = await doctorService.createReview(location.state.doctor._id, reviewFormData)
-    setDoctor({ ...location.state.doctor, reviews: [...location.state.doctor.reviews, newReview] })
+    const newReview = await doctorService.createReview(doctor._id, reviewFormData)
+    setDoctor({ ...doctor, reviews: [...doctor.reviews, newReview] })
   }
 
   return (
@@ -27,7 +38,7 @@ const NewReviewPage = (doctor, setDoctor) => {
         <NewReview handleAddReview={handleAddReview}/>
       </section>
       <section>
-      {location.state.doctor.reviews.map((review) =>
+      {doctor.reviews.map((review) =>
         <ReviewCard
         key={review._id}
         review={review}
@@ -38,4 +49,4 @@ const NewReviewPage = (doctor, setDoctor) => {
   )
 }
  
-export default NewReviewPage;
+export default ReviewsPage;
