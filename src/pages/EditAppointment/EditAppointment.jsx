@@ -11,8 +11,6 @@ import DoctorInfo from "../../components/DoctorInfo/DoctorInfo";
 
 const EditAppointment = (props) => {
   const { state } = useLocation();
-  console.log("State on Edit apt page:", state);
-  
   const [appointmentFormData, setAppointmentFormData] = useState(state);
 
   const handleChange = (evt) => {
@@ -30,7 +28,7 @@ const EditAppointment = (props) => {
   const handleClick = (newSelectedTime, newSelectedDate) => {
     setAppointmentFormData({
       ...appointmentFormData,
-      appointmentDate: new Date(newSelectedDate).toISOString().split("T")[0],
+      appointmentDate: newSelectedDate,
       time: newSelectedTime,
     });
     handleClose();
