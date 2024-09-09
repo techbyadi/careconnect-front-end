@@ -8,7 +8,6 @@ import styles from "./ReviewCard.module.css"
 import Icon from '../Icon/Icon'
 
 const ReviewCard = (props) => {
-  console.log(props.doctor);
   return (
     <main>
       <article className={styles.container}>
