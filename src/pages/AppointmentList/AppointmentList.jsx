@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 // css
 import styles from './AppointmentList.module.css'
 
@@ -7,8 +6,6 @@ import styles from './AppointmentList.module.css'
 import AppointmentCard from '../../components/AppointmentCard/AppointmentCard'
 
 const AppointmentList = (props) => {
-  const { state } = useLocation();
-  
   return (
     <>
       <h1>My Appointments</h1>
@@ -17,7 +14,7 @@ const AppointmentList = (props) => {
           <AppointmentCard appointment={appointment}
           key={appointment._id} 
           handleDeleteAppointment = {props.handleDeleteAppointment}
-          doctor = {state.name}/>
+          />
         )}
       </main>
     </>
