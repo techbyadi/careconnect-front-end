@@ -9,13 +9,13 @@ import styles from './AppointmentCard.module.css'
 // components
 import Icon from '../Icon/Icon'
 
-const AppointmentCard = ({ appointment, handleDeleteAppointment}) => {
+const AppointmentCard = ({ appointment, handleDeleteAppointment, doctor}) => {
   return (
     <main>
       <article className={styles.container}>
         <header>
           <span>
-            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {appointment.doctor?.name}</h1>
+            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {doctor}</h1>
             <div>
               <NavLink to='/appointment/edit' state={appointment}>
                 <Icon category='Edit'/>

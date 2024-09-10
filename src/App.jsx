@@ -31,6 +31,7 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const [appointments, setAppointments] = useState([])
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     const fetchAllAppointments = async () => {
@@ -39,6 +40,8 @@ function App() {
     }
     if (user) fetchAllAppointments()
   }, [user])
+
+
   const [doctors, setDoctors] = useState([])
   const [searchResults, setSearchResults] = useState([])
 
@@ -47,24 +50,24 @@ function App() {
     const fetchAllDoctors = async () => {
       const doctorsData = await doctorService.index()
       setDoctors(doctorsData)
+      setSearchResults(doctorsData)
     }
     fetchAllDoctors()
   }, [])
 
   const handleDoctorSearch = (formData) => {
-    
+    try {
+      setMessage('')
     const filteredDoctorResults = doctors.filter(doctor => {
       const locationMatch = formData.location
         ? doctor.location.toLowerCase().includes(formData.location.toLowerCase())
         : true
-
 
         const searchQuery = formData.specialization ? formData.specialization.toLowerCase() : '';
 
       const specializationMatch = formData.specialization
         ? doctor.specialization.toLowerCase().includes(searchQuery)
         : true
-
 
       const nameMatch = formData.specialization
         ? doctor.name.toLowerCase().includes(searchQuery)
@@ -76,13 +79,22 @@ function App() {
 
         return locationMatch && (specializationMatch || nameMatch || keywordsMatch);
     })
-    setSearchResults(filteredDoctorResults);
+    if (filteredDoctorResults.length === 0) {
+      setMessage('No Doctor found for provided input');
+    } else {
+      setSearchResults(filteredDoctorResults)
+      setMessage('')
+    }
+    } catch (error) {
+      console.log(error)
+      setMessage(error.message)
+    }
   }
 
-  const handleAddAppointment = async (appointmentFormData) => {
+  const handleAddAppointment = async (appointmentFormData, doctor) => {
     const newAppointment = await appointmentService.create(appointmentFormData)
     setAppointments([newAppointment, ...appointments])
-    navigate('/appointments')
+    navigate('/appointments', {state: doctor})
   }
 
   const handleLogout = () => {
@@ -121,6 +133,7 @@ function App() {
           <Landing
             user={user} doctors={searchResults.length ? searchResults : doctors}
             handleDoctorSearch={handleDoctorSearch}
+            message = {message}
           />}
         />
         <Route

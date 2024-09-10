@@ -18,6 +18,8 @@ const Signup = ({ handleAuthEvt }) => {
     email: '',
     password: '',
     passwordConf: '',
+    age: '',
+    phone: '',
   })
   const [photoData, setPhotoData] = useState({ photo: null })
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -71,10 +73,10 @@ const Signup = ({ handleAuthEvt }) => {
     }
   }
 
-  const { name, email, password, passwordConf } = formData
+  const { name, email, password, passwordConf, age, phone } = formData
 
   const isFormInvalid = () => {
-    return !(name && email && password && password === passwordConf)
+    return !(name && email && password && age && phone && password === passwordConf)
   }
 
   return (
@@ -92,6 +94,24 @@ const Signup = ({ handleAuthEvt }) => {
             type="text"
             value={email}
             name="email"
+            onChange={handleChange}
+          />
+        </label>
+        <label className={styles.label}>
+          Age
+          <input
+            type="number"
+            value={age}
+            name="age"
+            onChange={handleChange}
+          />
+        </label>
+        <label className={styles.label}>
+          Phone
+          <input
+            type="text"
+            value={phone}
+            name="phone"
             onChange={handleChange}
           />
         </label>
