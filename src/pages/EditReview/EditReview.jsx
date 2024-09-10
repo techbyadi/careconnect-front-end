@@ -28,31 +28,33 @@ const EditReview = () => {
   }
 
   return (
-    <form  className={styles.container} onSubmit={handleSubmit}>
-      <h1>Edit Review</h1>
-      <textarea 
-        required
-        type="text"
-        name="content"
-        value={reviewFormData.content}
-        placeholder="Write a review"
-        onChange={handleChange}
-      />
-      <label>Rating
-        <select
-        required
-        name='rating'
-        value={reviewFormData.rating}
-        onChange={handleChange}> 
-          <option value="1" >1</option>
-          <option value="2" >2</option>
-          <option value="3" >3</option>
-          <option value="4" >4</option>
-          <option value="5" >5</option>                    
-        </select>
-        </label>
-        <button type="submit">Save Changes</button>
-    </form>
+    <main  className={styles.container}>
+      <form onSubmit={handleSubmit}>
+        <h1>Edit Review</h1>
+        <textarea 
+          required
+          type="text"
+          name="content"
+          value={reviewFormData.content}
+          placeholder="Write a review"
+          onChange={handleChange}
+        />
+        <label>Rating
+          <select
+          required
+          name='rating'
+          value={reviewFormData.rating}
+          onChange={handleChange}> 
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>                    
+          </select>
+          </label>
+          <button type="submit">Save Changes</button>
+      </form>
+    </main>
   );
   
 }

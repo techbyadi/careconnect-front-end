@@ -1,9 +1,8 @@
 .container {
   width: 400px;
-  height: 50px;
   padding: 14px 21px;
-  border-radius: 5px;
-  background-color: var(--card-background);
+  border: solid;
+  border-width: .3px;
 }
 
 .container header {
@@ -18,69 +17,55 @@
   justify-content: space-between;
 }
 
-.container span img {
-  margin: 0;
-  width: 32px;
-	height: 32px;
-  opacity: .8;
-  padding: 3px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-}
+
 
 .container h1 {
   margin: 0;
   font-size: 19px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  /* -webkit-line-clamp: 1; */
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
 }
 
 .container p {
   width: 100%;
-  font-size: 14px;
+  font-size: 16p;
   font-weight: 400;
   overflow: hidden;
   padding-left: 15px;
-  line-height: 1.5rem;
+  line-height: 1rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  /* -webkit-line-clamp: 3; */
 	word-break: break-all;
   text-align-last: left;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
 }
 
-
+.container div{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -5px;
+}
 
 .container h4 {
   width: 100%;
-  font-size: 14px;
-  font-weight: 400;
-  overflow: hidden;
+  font-size: 17px;
+  font-weight: 600;
   padding-left: 15px;
   line-height: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-	word-break: break-all;
   text-align-last: left;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
 }
 
-.container div h5 {
-  font-size: 11px;
-}
-
-.container div > img {
-  width: 30px;
-	height: 30px;
-	object-fit: cover;
-}
-
-.container div section img {
-  width: 14px;
-	height: 14px;
+.container h5 {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 100;
+  padding-left: 15px;
+  line-height: 1.5rem;
+  text-align-last: left;
+  margin-top: -5px;
+  margin-bottom: -5;
 }
