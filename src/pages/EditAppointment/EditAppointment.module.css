@@ -35,14 +35,11 @@
   background: var(--primary);
 }
 
+
 .container a {
-  border: none;
-  font-size: 14px;
-  background: none;
-  font-weight: 500;
-  margin-top: 14px;
-  text-align: center;
-  color: rgb(200, 200, 200);
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
 }
 
 input:focus, select:focus, textarea:focus {

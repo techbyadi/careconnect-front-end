@@ -52,16 +52,29 @@ function App() {
   }, [])
 
   const handleDoctorSearch = (formData) => {
+    
     const filteredDoctorResults = doctors.filter(doctor => {
       const locationMatch = formData.location
         ? doctor.location.toLowerCase().includes(formData.location.toLowerCase())
-        : false
+        : true
+
+
+        const searchQuery = formData.specialization ? formData.specialization.toLowerCase() : '';
 
       const specializationMatch = formData.specialization
-        ? doctor.specialization.toLowerCase().includes(formData.specialization.toLowerCase())
-        : false
+        ? doctor.specialization.toLowerCase().includes(searchQuery)
+        : true
 
-      return locationMatch || specializationMatch
+
+      const nameMatch = formData.specialization
+        ? doctor.name.toLowerCase().includes(searchQuery)
+        : true
+
+      const keywordsMatch = formData.specialization
+        ? doctor.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery))
+        : true;
+
+        return locationMatch && (specializationMatch || nameMatch || keywordsMatch);
     })
     setSearchResults(filteredDoctorResults);
   }
@@ -105,7 +118,6 @@ function App() {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={
-
           <Landing
             user={user} doctors={searchResults.length ? searchResults : doctors}
             handleDoctorSearch={handleDoctorSearch}

@@ -22,7 +22,7 @@ const SearchCard = (props) => {
   };
 
   return (
-    <main className={styles.container}>
+    <main>
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
@@ -35,23 +35,16 @@ const SearchCard = (props) => {
           autoComplete="off"
           value={formData.specialization}
           onChange={handleChange}
-          placeholder="e.g. Cardiologist"
+          placeholder="Condition, doctor, symptoms"
         />
-        <input
-          name="symptoms"
-          type="text"
-          autoComplete="off"
-          value={formData.symptoms}
-          onChange={handleChange}
-          placeholder="e.g. chest pain"
-        />
+        
         <input
           name="location"
           type="text"
           autoComplete="off"
           value={formData.location}
           onChange={handleChange}
-          placeholder="e.g. Boston "
+          placeholder=" 📍 City"
         />
         <div>
           <button className={styles.button}>Search</button>
