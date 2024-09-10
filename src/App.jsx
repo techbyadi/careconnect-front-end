@@ -91,10 +91,10 @@ function App() {
     }
   }
 
-  const handleAddAppointment = async (appointmentFormData) => {
+  const handleAddAppointment = async (appointmentFormData, doctor) => {
     const newAppointment = await appointmentService.create(appointmentFormData)
     setAppointments([newAppointment, ...appointments])
-    navigate('/appointments')
+    navigate('/appointments', {state: doctor})
   }
 
   const handleLogout = () => {
