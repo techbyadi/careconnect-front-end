@@ -8,8 +8,7 @@ import styles from "./ReviewCard.module.css"
 import Icon from '../Icon/Icon'
 
 const ReviewCard = (props) => {
-  // Assume currentUser is passed as a prop
-  const { review, doctor, currentUser } = props;
+  const { review, doctor, currentUser, handleDeleteReview } = props;
 
   return (
     <main>
@@ -18,9 +17,17 @@ const ReviewCard = (props) => {
           <span>
             <p>Review by {review.author.name}</p>
             {currentUser.profile === review.author._id && (
-              <NavLink to='/review/edit' state={{ review, doctor }}>
-                <Icon category='Edit'/>
-              </NavLink>
+              <>
+                <NavLink to='/review/edit' state={{ review, doctor }}>
+                  <Icon category='Edit'/>
+                </NavLink>
+                <NavLink 
+                onClick={() => handleDeleteReview(doctor._id, review._id)}
+                state={{ review, doctor }}
+                >
+                  <Icon category='Trash' />
+                </NavLink>
+              </>
             )}
           </span>
           <p>{review.rating} star out of 5</p>  

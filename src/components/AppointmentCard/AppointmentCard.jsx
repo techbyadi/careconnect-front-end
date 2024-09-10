@@ -15,7 +15,7 @@ const AppointmentCard = ({ appointment, handleDeleteAppointment}) => {
       <article className={styles.container}>
         <header>
           <span>
-            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {appointment.doctor.name}</h1>
+            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {appointment.doctor?.name}</h1>
             <div>
               <NavLink to='/appointment/edit' state={appointment}>
                 <Icon category='Edit'/>

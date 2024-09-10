@@ -58,9 +58,24 @@ async function updateReview(doctor, reviewFormData) {
   }
 }
 
+const deleteReview = async (doctorId, reviewId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${doctorId}/reviews/${reviewId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
   show,
   createReview,
-  updateReview
+  updateReview,
+  deleteReview
 }
