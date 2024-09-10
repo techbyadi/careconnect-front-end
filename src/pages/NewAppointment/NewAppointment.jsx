@@ -39,7 +39,7 @@ const NewAppointment = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddAppointment(appointmentFormData, location.state.doctor);
+    props.handleAddAppointment(appointmentFormData);
   };
 
   const handleChange = (evt) => {
