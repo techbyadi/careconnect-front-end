@@ -32,7 +32,7 @@ const NewReview = (props) => {
         placeholder='Add a Review'
         onChange={handleChange}
       />
-      <label>Rating
+      <label>Rating:&nbsp;&nbsp;&nbsp;
         <select
         required
         name='rating'
