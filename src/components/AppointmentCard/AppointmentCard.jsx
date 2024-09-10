@@ -1,5 +1,4 @@
 
-
 // npm modules
 import { NavLink } from 'react-router-dom'
 
@@ -9,13 +8,14 @@ import styles from './AppointmentCard.module.css'
 // components
 import Icon from '../Icon/Icon'
 
-const AppointmentCard = ({ appointment, handleDeleteAppointment, doctor}) => {
+const AppointmentCard = ({ appointment, handleDeleteAppointment}) => {
+
   return (
     <main>
       <article className={styles.container}>
         <header>
           <span>
-            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {doctor}</h1>
+            <h1>On {new Date(appointment.appointmentDate).toDateString()} with {appointment.doctor.name}</h1>
             <div>
               <NavLink to='/appointment/edit' state={appointment}>
                 <Icon category='Edit'/>
