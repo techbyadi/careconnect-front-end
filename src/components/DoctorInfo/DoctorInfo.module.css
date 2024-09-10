@@ -1,8 +1,7 @@
-
-
 .container {
   display: flex;
   align-items: center;
+  background-color: white;
 }
 
 .container img {
@@ -18,7 +17,7 @@
 }
 
 .container header h1 {
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 22px;
 }
 .container span {
@@ -63,7 +62,7 @@
 }
 
 .container p:first-of-type {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .container div > img {
