@@ -12,7 +12,10 @@ const Landing = (props) => {
       <header>
         <h1>Search Doctor</h1>
         </header>
+        
       <section className={styles.search}>
+      <p className={styles.message}>{props.message}</p>
+      <br />
         <SearchCard handleDoctorSearch = {props.handleDoctorSearch}/>
       </section>
     </main>
