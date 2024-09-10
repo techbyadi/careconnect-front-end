@@ -16,18 +16,20 @@ const ReviewCard = (props) => {
         <header>
           <span>
             <h4>{review.rating} star out of 5</h4>  
-            {currentUser.profile === review.author._id && (
               <div>
-                <h5>Review by {review.author.name}</h5>
-                <NavLink to='/review/edit' state={{ review, doctor }}>
-                  <Icon category='Edit'/>
-                </NavLink>
-                <NavLink 
-                onClick={() => handleDeleteReview(doctor._id, review._id)} state={{ review, doctor }}>
-                  <Icon category='Trash' />
-                </NavLink>
-              </div>
-            )}
+              <h5>Review by {review.author.name}</h5>
+              {currentUser.profile === review.author._id && (
+                <>
+                  <NavLink to='/review/edit' state={{ review, doctor }}>
+                    <Icon category='Edit'/>
+                  </NavLink>
+                  <NavLink 
+                  onClick={() => handleDeleteReview(doctor._id, review._id)} state={{ review, doctor }}>
+                    <Icon category='Trash' />
+                  </NavLink>
+                </>
+              )}
+            </div>
           </span>
         </header>
           <h5>{review.content}</h5>
