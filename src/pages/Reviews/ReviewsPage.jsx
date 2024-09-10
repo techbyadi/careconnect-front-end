@@ -30,6 +30,11 @@ const ReviewsPage = (props) => {
     setDoctor({ ...doctor, reviews: [...doctor.reviews, newReview] })
   }
 
+  const handleDeleteReview = async (doctorId, reviewId) => {
+    await doctorService.deleteReview(doctorId, reviewId)
+    setDoctor({ ...doctor, reviews: doctor.reviews.filter((c) => c._id !== reviewId) })
+  }
+  
   return (
     <main className={styles.container}>
       <section className='reviewSection'>
@@ -43,6 +48,7 @@ const ReviewsPage = (props) => {
         review={review}
         doctor={doctor}
         currentUser={props.user}
+        handleDeleteReview={handleDeleteReview}
         />
           )}
       </section>

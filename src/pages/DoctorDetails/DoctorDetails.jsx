@@ -43,6 +43,7 @@ const DoctorDetails = ({ doctor, docDetailsRef }) => {
   const handleClickReview = () => {
     navigate('/reviews',  { state: {doctor} });
   };
+  
 
   useImperativeHandle(docDetailsRef, () => ({
     handleOpen() {

@@ -24,7 +24,7 @@ const EditReview = () => {
     e.preventDefault()
     console.log('name of doctor', state);
     await doctorService.updateReview(state.doctor._id, reviewFormData)
-    navigate(`/`)
+    navigate(`/reviews`, {state:state})
   }
 
   return (
