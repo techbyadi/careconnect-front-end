@@ -27,20 +27,22 @@ const DoctorCard = ({ doctor }) => {
 
   return (
     <>
-      <article className={styles.container}>
-        <NavLink to="#" onClick={showDoctorDetails}>
-          <header>
-            <DoctorInfo doctor={doctor} />
-            <p>
-              <div>
-                ⭐️
-                <a href="" onClick={() => handleClickReview()}>
-                  Reviews
-                </a>
-              </div>
-            </p>
-          </header>
-        </NavLink>
+      <article className={styles.container} onClick={showDoctorDetails}>
+        <header>
+          <DoctorInfo doctor={doctor} />
+        </header>
+          <div>
+            ⭐️
+            &nbsp; <a
+              href=""
+              onClick={(evt) => {
+                evt.stopPropagation();
+                handleClickReview();
+              }}
+            >
+              Reviews
+            </a>
+          </div>
       </article>
 
       <DoctorDetails doctor={doctor} docDetailsRef={docDetailsRef} />

@@ -66,16 +66,6 @@ const DoctorDetails = ({ doctor, docDetailsRef }) => {
               <hr />
                 <DoctorAvailability doctor={doctor} handleClick={handleClick}/>
               <hr />
-              <br />
-              <Button variant="contained" onClick={() => handleClick(null)}>
-                Book an Appointment
-              </Button>
-              <Button variant="contained" onClick={()=> handleClickReview()}>
-          Leave a Review
-          </Button>
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Reviews will go here
             </Typography>
           </Box>
         </Box>
