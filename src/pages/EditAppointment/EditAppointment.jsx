@@ -48,27 +48,15 @@ const EditAppointment = (props) => {
       />
       <form onSubmit={handleSubmit}>
         <DoctorInfo doctor={appointmentFormData.doctor} />
-        <br /> 
-        <h3>
-        <span
-          onClick={handleOpen}
-          style={{
-            textDecoration: "underline",
-            color: "blue",
-            cursor: "pointer",
-          }}
-        >
-          Select New Date and Time
-        </span>
-        </h3>
+        <br /> <br />
+        <a onClick={handleOpen}>Select New Date and Time</a>
+        <br />
         <label>Date</label>
         <input
           disabled
           type="text"
           name="appointmentDateForDisplay"
-          value={
-            new Date(appointmentFormData.appointmentDate).toDateString()
-          }
+          value={new Date(appointmentFormData.appointmentDate).toDateString()}
           onChange={handleChange}
         />
         <label>Date</label>
@@ -77,9 +65,7 @@ const EditAppointment = (props) => {
           disabled
           type="text"
           name="appointmentDate"
-          value={
-            appointmentFormData.appointmentDate
-          }
+          value={appointmentFormData.appointmentDate}
           onChange={handleChange}
         />
         <label>Time</label>
@@ -90,7 +76,7 @@ const EditAppointment = (props) => {
           value={appointmentFormData.time}
           onChange={handleChange}
         />
-        
+
         <br />
         <label>Appointment Type</label>
         <select

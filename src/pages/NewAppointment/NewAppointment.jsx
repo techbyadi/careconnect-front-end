@@ -66,16 +66,7 @@ const NewAppointment = (props) => {
         </label>
         <label>Time: {appointmentFormData.time}</label>
         <br />
-        <span
-          onClick={handleOpen}
-          style={{
-            textDecoration: "underline",
-            color: "blue",
-            cursor: "pointer",
-          }}
-        >
-          View More Available Slots
-        </span>
+        <a onClick={handleOpen}>View More Available Slots</a>
         <br />
         <input
           hidden

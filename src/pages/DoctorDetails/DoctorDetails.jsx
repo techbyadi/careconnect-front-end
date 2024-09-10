@@ -70,7 +70,7 @@ const DoctorDetails = ({ doctor, docDetailsRef }) => {
               <Button variant="contained" onClick={() => handleClick(null)}>
                 Book an Appointment
               </Button>
-              <Button variant="contained" onClick={()=> handleClickReview(null)}>
+              <Button variant="contained" onClick={()=> handleClickReview()}>
           Leave a Review
           </Button>
             </Typography>

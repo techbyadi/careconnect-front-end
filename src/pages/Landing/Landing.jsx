@@ -8,7 +8,7 @@ import SearchCard from '../../components/SearchCard/SearchCard'
 const Landing = (props) => {
   return (
     <>
-    <main className={styles.container}>
+    <main>
       <header>
         <h1>Search Doctor</h1>
         </header>
