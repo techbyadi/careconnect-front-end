@@ -42,6 +42,7 @@ const ReviewsPage = (props) => {
         key={review._id}
         review={review}
         doctor={doctor}
+        currentUser={props.user}
         />
           )}
       </section>
