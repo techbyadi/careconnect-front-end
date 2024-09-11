@@ -22,7 +22,6 @@ const EditReview = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('name of doctor', state);
     await doctorService.updateReview(state.doctor._id, reviewFormData)
     navigate(`/reviews`, {state:state})
   }

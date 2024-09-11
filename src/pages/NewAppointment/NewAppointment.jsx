@@ -15,7 +15,6 @@ const NewAppointment = (props) => {
   const doctor = location.state.doctor;
   const selectedDate = location.state.selectedDate;
   const selectedTime = location.state.selectedTime;
-
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -57,7 +56,6 @@ const NewAppointment = (props) => {
         doctor={doctor}
         handleClick={handleClick}
       />
-
       <form onSubmit={handleSubmit}>
         <DoctorInfo doctor={location.state.doctor} />
         <br /> <br />

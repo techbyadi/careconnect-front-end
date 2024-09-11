@@ -34,18 +34,18 @@ const NewReview = (props) => {
       />
       <label>Rating:&nbsp;&nbsp;&nbsp;
         <select
-        required
-        name='rating'
-        value={reviewFormData.rating}
-        onChange={handleChange}> 
-          <option value="1" >1</option>
-          <option value="2" >2</option>
-          <option value="3" >3</option>
-          <option value="4" >4</option>
-          <option value="5" >5</option>                    
+          required
+          name='rating'
+          value={reviewFormData.rating}
+          onChange={handleChange}> 
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>                    
         </select>
-        </label>
-        <button type="submit"><Icon category='Create' /></button>
+      </label>
+      <button type="submit"><Icon category='Create' /></button>
     </form>
   )
 }

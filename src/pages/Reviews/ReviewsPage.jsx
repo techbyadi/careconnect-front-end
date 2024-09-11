@@ -38,8 +38,8 @@ const ReviewsPage = (props) => {
   return (
     <main className={styles.container}>
       <section className='reviewSection'>
-      <DoctorInfo doctor={location.state.doctor} />
-        {props.user ? <NewReview handleAddReview={handleAddReview}/> : null}        
+        <DoctorInfo doctor={location.state.doctor} />
+          {props.user ? <NewReview handleAddReview={handleAddReview}/> : null}        
       </section>
       <section>
       {doctor.reviews.map((review) =>
@@ -50,7 +50,7 @@ const ReviewsPage = (props) => {
         currentUser={props.user}
         handleDeleteReview={handleDeleteReview}
         />
-          )}
+      )}
       </section>
     </main>
   )
