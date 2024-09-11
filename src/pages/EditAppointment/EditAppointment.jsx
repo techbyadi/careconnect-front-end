@@ -59,7 +59,6 @@ const EditAppointment = (props) => {
           value={new Date(appointmentFormData.appointmentDate).toDateString()}
           onChange={handleChange}
         />
-        <label>Date</label>
         <input
           hidden
           disabled

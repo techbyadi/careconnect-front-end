@@ -16,18 +16,20 @@ import styles from "./ReviewsPage.module.css"
 const ReviewsPage = (props) => {
   const location = useLocation()
   const [doctor, setDoctor] = useState({reviews: []})
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDoctor = async() => {
       const doctorData = await doctorService.show(location.state.doctor._id)
       setDoctor(doctorData)
+      setLoading(false)
     }
     fetchDoctor()    
   }, [location.state.doctor])
 
   const handleAddReview = async reviewFormData => {
     const newReview = await doctorService.createReview(doctor._id, reviewFormData)
-    setDoctor({ ...doctor, reviews: [...doctor.reviews, newReview] })
+    setDoctor({ ...doctor, reviews: [newReview, ...doctor.reviews, ] })
   }
 
   const handleDeleteReview = async (doctorId, reviewId) => {
@@ -42,7 +44,8 @@ const ReviewsPage = (props) => {
           {props.user ? <NewReview handleAddReview={handleAddReview}/> : null}        
       </section>
       <section>
-      {doctor.reviews.map((review) =>
+        {loading? <h4> ⌛ Loading Reviews... </h4> :
+      (doctor.reviews.map((review) =>
         <ReviewCard
         key={review._id}
         review={review}
@@ -50,7 +53,8 @@ const ReviewsPage = (props) => {
         currentUser={props.user}
         handleDeleteReview={handleDeleteReview}
         />
-      )}
+          ))
+        }
       </section>
     </main>
   )

@@ -23,7 +23,7 @@ const ReviewCard = (props) => {
             <h4>{review.rating} star out of 5</h4>  
             <div>
               <h5>Review by {review.author.name}</h5>
-              {currentUser.profile === review.author._id && (
+              {currentUser?.profile === review.author?._id && (
                 <>
                   <NavLink to='/review/edit' state={{ review, doctor }}>
                     <Icon category='Edit'/>

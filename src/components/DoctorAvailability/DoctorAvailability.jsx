@@ -1,11 +1,30 @@
+import { useState, useEffect } from 'react';
 // css import
 import styles from "./DoctorAvailability.module.css";
 
+// services
+import * as doctorService from '../../services/doctorService'
+
 const DoctorAvailability = ({ doctor, handleClick }) => {
+  const [updatedDoctor, setUpdatedDoctor] = useState(doctor)
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDoctor = async() => {
+      const doctorData = await doctorService.show(doctor._id)
+      setUpdatedDoctor(doctorData)
+      setLoading(false)
+    }
+    fetchDoctor()    
+  }, [doctor])
+
+  
   return (
     <>
       <h3>Available Appointment Slots</h3>
-      {doctor.availability.map((availability, index) => (
+
+      {loading ? <h4> ⌛ Loading availability...</h4> :
+      (updatedDoctor.availability.map((availability, index) => (
         <div key={index}>
           <h4>{new Date(availability.date).toDateString()}</h4>
           <div>
@@ -31,7 +50,8 @@ const DoctorAvailability = ({ doctor, handleClick }) => {
             ))}
           </div>
         </div>
-      ))}
+      )))
+    }
     </>
   );
 };
