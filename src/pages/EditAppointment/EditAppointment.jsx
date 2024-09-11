@@ -11,19 +11,11 @@ import DoctorInfo from "../../components/DoctorInfo/DoctorInfo";
 
 const EditAppointment = (props) => {
   const { state } = useLocation();
+  const doctor = state.doctor;
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
   const [appointmentFormData, setAppointmentFormData] = useState(state);
-
-  const handleChange = (evt) => {
-    setAppointmentFormData({
-      ...appointmentFormData,
-      [evt.target.name]: evt.target.value,
-    })
-  }
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    props.handleUpdateAppointment(appointmentFormData);
-  }
 
   const handleClick = (newSelectedTime, newSelectedDate) => {
     setAppointmentFormData({
@@ -34,9 +26,20 @@ const EditAppointment = (props) => {
     handleClose();
   };
 
-  const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    props.handleUpdateAppointment(appointmentFormData);
+  }
+
+
+
+  const handleChange = (evt) => {
+    setAppointmentFormData({
+      ...appointmentFormData,
+      [evt.target.name]: evt.target.value,
+    })
+  }
+
 
   return (
     <main className={styles.container}>
@@ -47,7 +50,7 @@ const EditAppointment = (props) => {
         handleClick={handleClick}
       />
       <form onSubmit={handleSubmit}>
-        <DoctorInfo doctor={appointmentFormData.doctor} />
+        <DoctorInfo doctor={doctor} />
         <br /> <br />
         <a onClick={handleOpen}>Select New Date and Time</a>
         <br />

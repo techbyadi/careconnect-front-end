@@ -11,10 +11,10 @@ import DoctorInfo from "../../components/DoctorInfo/DoctorInfo";
 
 
 const NewAppointment = (props) => {
-  const location = useLocation();
-  const doctor = location.state.doctor;
-  const selectedDate = location.state.selectedDate;
-  const selectedTime = location.state.selectedTime;
+  const {state} = useLocation();
+  const doctor = state.doctor;
+  const selectedDate = state.selectedDate;
+  const selectedTime = state.selectedTime;
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -24,7 +24,7 @@ const NewAppointment = (props) => {
     time: selectedTime,
     reason: "",
     mode: "In Person",
-    doctor: doctor._id,
+    doctor: doctor,
   });
 
   const handleClick = (newSelectedTime, newSelectedDate) => {
@@ -57,7 +57,7 @@ const NewAppointment = (props) => {
         handleClick={handleClick}
       />
       <form onSubmit={handleSubmit}>
-        <DoctorInfo doctor={location.state.doctor} />
+        <DoctorInfo doctor={doctor} />
         <br /> <br />
         <label>
           Date: {new Date(appointmentFormData.appointmentDate).toDateString()}
