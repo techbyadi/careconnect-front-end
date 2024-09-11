@@ -1,5 +1,3 @@
-// components
-
 // assets
 import profileIcon from '../../assets/icons/profile.png'
 

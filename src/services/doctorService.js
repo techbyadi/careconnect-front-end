@@ -43,7 +43,6 @@ async function createReview(doctorId, reviewFormData) {
 
 async function updateReview(doctor, reviewFormData) {
   try {
-    console.log('DOCTOR', doctor);
     const res = await fetch(`${BASE_URL}/${doctor}/reviews`, {
       method: 'PUT',
       headers: {

@@ -40,8 +40,8 @@ const ReviewsPage = (props) => {
   return (
     <main className={styles.container}>
       <section className='reviewSection'>
-      <DoctorInfo doctor={location.state.doctor} />
-        {props.user ? <NewReview handleAddReview={handleAddReview}/> : null}        
+        <DoctorInfo doctor={location.state.doctor} />
+          {props.user ? <NewReview handleAddReview={handleAddReview}/> : null}        
       </section>
       <section>
         {loading? <h4> ⌛ Loading Reviews... </h4> :

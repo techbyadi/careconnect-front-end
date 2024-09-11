@@ -17,7 +17,6 @@ async function index() {
 
 async function create(appointmentFormData) {
   try {
-    console.log(`This is appointmentservice.js : ${appointmentFormData}`)
     
     const res = await fetch(BASE_URL, {
       method: 'POST',

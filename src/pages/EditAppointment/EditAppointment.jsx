@@ -75,7 +75,6 @@ const EditAppointment = (props) => {
           value={appointmentFormData.time}
           onChange={handleChange}
         />
-
         <br />
         <label>Appointment Type</label>
         <select

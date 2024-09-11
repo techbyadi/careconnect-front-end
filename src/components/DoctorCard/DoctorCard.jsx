@@ -1,8 +1,6 @@
 // npm modules
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { Rating } from "@mui/material";
-import React from "react";
 
 //pages
 import DoctorDetails from "../../pages/DoctorDetails/DoctorDetails";
@@ -14,7 +12,7 @@ import styles from "./DoctorCard.module.css";
 const DoctorCard = ({ doctor }) => {
   const docDetailsRef = useRef(null);
   const navigate = useNavigate();
-
+  
   const handleClickReview = () => {
     navigate("/reviews", { state: { doctor } });
   };
@@ -44,7 +42,6 @@ const DoctorCard = ({ doctor }) => {
             </a>
           </div>
       </article>
-
       <DoctorDetails doctor={doctor} docDetailsRef={docDetailsRef} />
     </>
   );

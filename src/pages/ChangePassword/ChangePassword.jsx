@@ -11,6 +11,7 @@ import styles from './ChangePassword.module.css'
 const ChangePassword = ({ handleAuthEvt }) => {
   const navigate = useNavigate()
   const [message, setMessage] = useState('')
+  
   const [formData, setFormData] = useState({
     password: '',
     newPassword: '',
