@@ -29,7 +29,7 @@ const ReviewsPage = (props) => {
 
   const handleAddReview = async reviewFormData => {
     const newReview = await doctorService.createReview(doctor._id, reviewFormData)
-    setDoctor({ ...doctor, reviews: [...doctor.reviews, newReview] })
+    setDoctor({ ...doctor, reviews: [newReview, ...doctor.reviews, ] })
   }
 
   const handleDeleteReview = async (doctorId, reviewId) => {
