@@ -1,8 +1,6 @@
 //npm modules
 import { useState } from "react";
 
-// components
-
 // css
 import styles from "./SearchCard.module.css";
 
@@ -12,6 +10,7 @@ const SearchCard = (props) => {
     symptoms: "",
     location: "",
   });
+  
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };

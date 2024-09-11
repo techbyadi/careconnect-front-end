@@ -70,6 +70,7 @@ const Signup = ({ handleAuthEvt }) => {
       console.log(err)
       setMessage(err.message)
       setIsSubmitted(false)
+
     }
   }
 

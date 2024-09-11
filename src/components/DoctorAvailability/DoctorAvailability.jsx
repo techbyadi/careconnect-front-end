@@ -27,7 +27,6 @@ const DoctorAvailability = ({ doctor, handleClick }) => {
       (updatedDoctor.availability.map((availability, index) => (
         <div key={index}>
           <h4>{new Date(availability.date).toDateString()}</h4>
-          
           <div>
             {availability.slots.map((slot, slotIndex) => (
               slot.isAvailable ? (
@@ -38,7 +37,7 @@ const DoctorAvailability = ({ doctor, handleClick }) => {
                 >
                   {slot.time}
                 </button>
-              ) : (
+                ) : (
                 <button
                   className={styles.button}
                   key={slotIndex}

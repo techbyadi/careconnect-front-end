@@ -8,7 +8,12 @@ import styles from "./ReviewCard.module.css"
 import Icon from '../Icon/Icon'
 
 const ReviewCard = (props) => {
-  const { review, doctor, currentUser, handleDeleteReview } = props;
+  const { 
+    review, 
+    doctor, 
+    currentUser, 
+    handleDeleteReview 
+  } = props;
 
   return (
     <main>
@@ -16,7 +21,7 @@ const ReviewCard = (props) => {
         <header>
           <span>
             <h4>{review.rating} star out of 5</h4>  
-              <div>
+            <div>
               <h5>Review by {review.author.name}</h5>
               {currentUser?.profile === review.author?._id && (
                 <>
@@ -32,7 +37,7 @@ const ReviewCard = (props) => {
             </div>
           </span>
         </header>
-          <h5>{review.content}</h5>
+        <h5>{review.content}</h5>
       </article>
     </main>
   );

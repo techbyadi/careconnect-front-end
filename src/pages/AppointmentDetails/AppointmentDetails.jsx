@@ -1,9 +1,3 @@
-// npm modules
-
-// services
-
-// components
-
 // css
 import styles from './AppointmentDetails.module.css'
 

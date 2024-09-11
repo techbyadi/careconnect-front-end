@@ -1,15 +1,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useImperativeHandle } from "react";
 import { useNavigate } from "react-router-dom";
 import DoctorInfo from "../../components/DoctorInfo/DoctorInfo";
 import DoctorAvailability from "../../components/DoctorAvailability/DoctorAvailability";
-
-// css
-import styles from "./DoctorDetails.module.css";
 
 const style = {
   position: "absolute",
@@ -34,16 +30,11 @@ const contentStyle = {
 const DoctorDetails = ({ doctor, docDetailsRef }) => {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
-  
   const navigate = useNavigate();
 
   const handleClick = (selectedTime, selectedDate) => {
     navigate("/appointments/new", { state: { doctor, selectedTime, selectedDate } });
   };
-  const handleClickReview = () => {
-    navigate('/reviews',  { state: {doctor} });
-  };
-  
 
   useImperativeHandle(docDetailsRef, () => ({
     handleOpen() {
