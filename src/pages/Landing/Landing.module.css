@@ -96,7 +96,7 @@
 
 .container section > header h1 {
   margin: 5px;
-  font-size: 36px;
+  font-size: 40px;
   letter-spacing: 2px;
 }
 
@@ -145,6 +145,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.heading {
+  font-size: 42px;
+  font-weight: 620;
+  color: #1E3A72;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 .testimonial article * {
