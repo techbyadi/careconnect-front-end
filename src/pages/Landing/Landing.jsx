@@ -9,11 +9,11 @@ const Landing = (props) => {
   return (
     <>
     <main>  
+      
       <section className={styles.search}>
-        
+      <h1 className={styles.heading}>Connect with the Right Doctor for You</h1>
       <p className={styles.message}>{props.message}</p>
       <br />
-      
         <SearchCard handleDoctorSearch = {props.handleDoctorSearch}/>
       </section>
     </main>

@@ -80,7 +80,7 @@ function App() {
         return locationMatch && (specializationMatch || nameMatch || keywordsMatch);
     })
     if (filteredDoctorResults.length === 0) {
-      setMessage('No Doctor found for provided input');
+      setMessage('No doctors found matching your search criteria');
     } else {
       setSearchResults(filteredDoctorResults)
       setMessage('')
