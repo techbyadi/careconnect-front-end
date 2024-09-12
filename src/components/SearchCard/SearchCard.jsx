@@ -34,7 +34,7 @@ const SearchCard = (props) => {
           autoComplete="off"
           value={formData.specialization}
           onChange={handleChange}
-          placeholder="Condition, doctor, symptoms"
+          placeholder="🩺 Condition, doctor, symptoms"
         />
         
         <input

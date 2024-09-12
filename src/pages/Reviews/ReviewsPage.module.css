@@ -94,7 +94,6 @@
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border);
 }
 
 .container header button img, .container header a img {

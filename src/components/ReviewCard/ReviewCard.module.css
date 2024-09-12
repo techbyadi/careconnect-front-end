@@ -6,6 +6,7 @@
 
 .container header {
   margin-bottom: 14px;
+  padding-top: 10px;
 }
 
 .container span {
@@ -15,8 +16,6 @@
   margin: 7px 0px 12px 0px;
   justify-content: space-between;
 }
-
-
 
 .container h1 {
   margin: 0;
@@ -52,20 +51,32 @@
 
 .container h4 {
   width: 100%;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   padding-left: 15px;
   line-height: 1.5rem;
   text-align-last: left;
+  margin: 0;
+  padding-bottom: 5px;
 }
 
 .container h5 {
   width: 100%;
   font-size: 12px;
   font-weight: 100;
-  padding-left: 15px;
-  line-height: 3rem;
   text-align-last: left;
-  margin-top: -3px;
-  margin-bottom: -5px;
+  margin: 0;
+}
+
+.container img {
+  width: 30px;
+  height: 30px;
+  margin-right: 2px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background-color: var(--background);
+}
+
+.container .dateAndCalendar  {
+  display: flex;
 }
