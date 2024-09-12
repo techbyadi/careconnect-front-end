@@ -8,14 +8,12 @@ import SearchCard from '../../components/SearchCard/SearchCard'
 const Landing = (props) => {
   return (
     <>
-    <main>
-      <header>
-        <h1>Search Doctor</h1>
-        </header>
-        
+    <main>  
       <section className={styles.search}>
+        
       <p className={styles.message}>{props.message}</p>
       <br />
+      
         <SearchCard handleDoctorSearch = {props.handleDoctorSearch}/>
       </section>
     </main>

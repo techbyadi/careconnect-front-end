@@ -38,7 +38,7 @@ const ReviewCard = (props) => {
               </>
             )}
           </div>
-          <h3>⭐️ {review.rating} / 5 </h3>  
+          <h3> &nbsp; ⭐️ {review.rating} / 5 </h3>  
           <span>
             <div>
               &nbsp;&nbsp;<img src={photo} alt="The user's avatar" />

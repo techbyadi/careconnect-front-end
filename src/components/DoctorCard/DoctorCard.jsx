@@ -23,6 +23,10 @@ const DoctorCard = ({ doctor }) => {
     }
   };
 
+  const averageRating = doctor.reviews.length
+    ? (doctor.reviews.reduce((acc, review) => acc + review.rating, 0) / doctor.reviews.length).toFixed(1)
+    : "";
+
   return (
     <>
       <article className={styles.container} onClick={showDoctorDetails}>
@@ -30,15 +34,23 @@ const DoctorCard = ({ doctor }) => {
           <DoctorInfo doctor={doctor} />
         </header>
           <div>
-            ⭐️
-            &nbsp; <a
+          <a className={styles.ratings} 
+          href=""
+          onClick={(evt) => {
+            evt.stopPropagation();
+            handleClickReview();
+          }}>
+          ⭐️ &nbsp;
+            {averageRating}
+            </a>
+            <a
               href=""
               onClick={(evt) => {
                 evt.stopPropagation();
                 handleClickReview();
               }}
             >
-              Reviews
+            ● Reviews ({doctor.reviews.length})
             </a>
           </div>
       </article>
